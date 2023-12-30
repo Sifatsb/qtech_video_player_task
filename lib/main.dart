@@ -11,6 +11,7 @@ void main() {
       title: "Video Player",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
+
     ),
   );
 }
