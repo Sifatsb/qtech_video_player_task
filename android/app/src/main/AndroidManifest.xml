@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:label="qtech_video_player_task"
         android:name="${applicationName}"
@@ -30,4 +31,9 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+
+
+
+
+
 </manifest>

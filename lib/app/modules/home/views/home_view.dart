@@ -13,11 +13,12 @@ class HomeView extends GetView<HomeController> {
         title: const Text('HomeView'),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      body: SingleChildScrollView(
+        child: Obx(() => Column(
+          children: [
+            controller.isLoading.value ? CircularProgressIndicator() : Text(controller.videosList.length.toString()),
+          ],
+        ),),
       ),
     );
   }
