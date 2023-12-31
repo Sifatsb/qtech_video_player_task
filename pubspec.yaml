@@ -10,6 +10,8 @@ dependencies:
   http: ^1.1.2
   get_cli: ^1.8.4
   get: 4.6.6
+  video_player: ^2.8.1
+  chewie: ^1.7.4
   flutter: 
     sdk: flutter
 

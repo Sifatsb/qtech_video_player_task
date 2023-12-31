@@ -24,7 +24,9 @@ class HomeView extends GetView<HomeController> {
             return ListTile(
               title: Text(video.title ?? ''),
               onTap: () {
-                Get.toNamed(Routes.VIDEO_PLAY, arguments: video);
+                Get.toNamed(Routes.VIDEO_PLAY, arguments: {
+                  'video': controller.videosList[index],
+                });
               },
             );
           },
