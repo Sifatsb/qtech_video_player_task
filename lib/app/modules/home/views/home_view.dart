@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:qtech_video_player_task/app/routes/app_pages.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -13,13 +14,23 @@ class HomeView extends GetView<HomeController> {
         title: const Text('HomeView'),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Obx(() => Column(
-          children: [
-            controller.isLoading.value ? CircularProgressIndicator() : Text(controller.videosList.length.toString()),
-          ],
-        ),),
+      body: Obx(
+            () => controller.isLoading.value
+            ? const Center(child: CircularProgressIndicator())
+            : ListView.builder(
+          itemCount: controller.videosList.length,
+          itemBuilder: (context, index) {
+            final video = controller.videosList[index];
+            return ListTile(
+              title: Text(video.title ?? ''),
+              onTap: () {
+                Get.toNamed(Routes.VIDEO_PLAY, arguments: video);
+              },
+            );
+          },
+        ),
       ),
     );
   }
 }
+

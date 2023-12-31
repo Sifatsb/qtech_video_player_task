@@ -36,7 +36,7 @@ dynamic returnResponse(http.Response response) {
   debugPrint(response.body);
   switch (response.statusCode) {
     case HttpStatus.ok:
-      var responseJson = json.decode(response.body.toString());
+      var responseJson = json.decode(utf8.decode(response.bodyBytes));
       return responseJson;
     case HttpStatus.badRequest:
       throw BadRequestException(response.body.toString());

@@ -10,43 +10,38 @@ class HomeController extends GetxController {
 
   RxBool isLoading = false.obs;
 
-
-  Future<TrendingVideoResponseModel> getTrendingVideos({required int page}) async {
-
-    try{
-      print('objecttttttt');
+  Future<TrendingVideoResponseModel> getTrendingVideos(
+      {required int page}) async {
+    try {
       isLoading.value = true;
-      
-      final response = await ApiBaseClient().getData(url: ApiUrls.getTrendingVideos(page: page),);
 
-      TrendingVideoResponseModel responseModel = TrendingVideoResponseModel.fromJson(response);
+      final response = await ApiBaseClient().getData(
+        url: ApiUrls.getTrendingVideos(page: page),
+      );
 
-      if(responseModel.results!.isNotEmpty){
-        
-        for(var element in responseModel.results!){
+      TrendingVideoResponseModel responseModel =
+          TrendingVideoResponseModel.fromJson(response);
+
+      if (responseModel.results!.isNotEmpty) {
+        for (var element in responseModel.results!) {
           videosList.add(element);
         }
       }
-      
-    }catch(e, t){
-      print('object::::::');
+    } catch (e, t) {
       isLoading.value = false;
       showBasicFailedSnackBar(message: 'Something went wrong');
       debugPrint('$e');
       debugPrint('$t');
-
-    }finally{
+    } finally {
       isLoading.value = false;
     }
 
     return TrendingVideoResponseModel();
   }
 
-
   @override
   void onInit() {
     getTrendingVideos(page: 1);
     super.onInit();
   }
-
 }
