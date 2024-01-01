@@ -12,6 +12,7 @@ dependencies:
   get: 4.6.6
   video_player: ^2.8.1
   chewie: ^1.7.4
+  intl:
   flutter: 
     sdk: flutter
 
