@@ -15,8 +15,13 @@ class VideoPlayView extends GetView<VideoPlayController> {
         title: const Text('VideoPlayView'),
         centerTitle: true,
       ),
-      body: Container(
-        child: Chewie(controller: controller.chewieController),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 500,
+            child: Chewie(controller: controller.chewieController),
+          ),
+        ],
       ),
     );
   }
