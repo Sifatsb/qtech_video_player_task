@@ -81,6 +81,7 @@ class VideoCard extends StatelessWidget {
                 ),
               ),
 
+              /// Date & Views
               Row(
                 children: [
                   Padding(
