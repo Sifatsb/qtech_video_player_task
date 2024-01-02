@@ -33,7 +33,7 @@ class HomeView extends GetView<HomeController> {
                       DateTime.parse(video.dateAndTime ?? '');
                   String formattedDate =
                       DateFormat('MMM d, yyyy').format(originalDate);
-                  return VideoCard(
+                  return CustomCard(
                     onTap: () => Get.toNamed(
                       Routes.VIDEO_PLAY,
                       arguments: {

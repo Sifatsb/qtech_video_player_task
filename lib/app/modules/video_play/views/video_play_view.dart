@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:qtech_video_player_task/app/data/constants/app_text_style.dart';
+import 'package:qtech_video_player_task/app/modules/video_play/views/widgets/custom_button.dart';
 import 'package:qtech_video_player_task/app/utilities/extensions/time_ago_calculation.dart';
 import 'package:video_player/video_player.dart';
 
@@ -32,7 +33,7 @@ class VideoPlayView extends GetView<VideoPlayController> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 controller.video?.title ?? '',
-                style: AppTextStyle.textStyle16Bold,
+                style: AppTextStyle.textStyle15Bold,
               )
             ),
 
@@ -47,20 +48,37 @@ class VideoPlayView extends GetView<VideoPlayController> {
                     children: [
                       Text(
                         '${controller.video?.viewers} views   .',
-                        style: AppTextStyle.textStyle16Grey,
+                        style: AppTextStyle.textStyle13Grey,
                       ),
                       const SizedBox(
                         width: 20,
                       ),
                       Text(
                         Extensions().calculateTimeAgo(DateTime.tryParse(controller.video?.createdAt ?? '') ?? DateTime.now()),
-                        style: AppTextStyle.textStyle16Grey,
+                        style: AppTextStyle.textStyle13Grey,
                       ),
                     ],
                   ),
                 ),
               ],
             ),
+
+            const SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  CustomButton(title: 'MASH ALLAH (12K)', icon: Icons.favorite_border_outlined,),
+                  CustomButton(title: 'LIKE', icon: Icons.thumb_up_alt_outlined,),
+                  CustomButton(title: 'SHARE', icon: Icons.share,),
+                  CustomButton(title: 'REPORT', icon: Icons.flag_outlined,),
+                ],
+              ),
+            ),
+
+            Row(
+              children: [],
+            ),
+
 
           ],
         ),

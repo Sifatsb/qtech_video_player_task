@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qtech_video_player_task/app/data/constants/app_text_style.dart';
 
-class VideoCard extends StatelessWidget {
+class CustomCard extends StatelessWidget {
   final String thumbnail;
   final String title;
   final String views;
@@ -10,7 +10,7 @@ class VideoCard extends StatelessWidget {
   final String channelImage;
   final Function()? onTap;
 
-  const VideoCard({
+  const CustomCard({
     super.key,
     required this.thumbnail,
     required this.title,
@@ -38,7 +38,7 @@ class VideoCard extends StatelessWidget {
                   Image.network(
                     thumbnail,
                     fit: BoxFit.cover,
-                    height: 250,
+                    height: 200,
                     width: double.infinity,
                   ),
                   Positioned(
@@ -46,7 +46,7 @@ class VideoCard extends StatelessWidget {
                     right: 8.0,
                     child: Container(
                       padding: const EdgeInsets.all(4.0),
-                      color: Colors.black.withOpacity(0.7),
+                      color: Colors.black,
                       child: Text(
                         duration,
                         style: const TextStyle(color: Colors.white),
@@ -70,7 +70,7 @@ class VideoCard extends StatelessWidget {
                     Expanded(
                       child: Text(
                         title,
-                        style: AppTextStyle.textStyle16Bold,
+                        style: AppTextStyle.textStyle15Bold,
                       ),
                     ),
                     const Icon(
@@ -92,20 +92,21 @@ class VideoCard extends StatelessWidget {
                       children: [
                         Text(
                           '$views views   .',
-                          style: AppTextStyle.textStyle16Grey,
+                          style: AppTextStyle.textStyle13Grey,
                         ),
                         const SizedBox(
                           width: 20,
                         ),
                         Text(
                           date,
-                          style: AppTextStyle.textStyle16Grey,
+                          style: AppTextStyle.textStyle13Grey,
                         ),
                       ],
                     ),
                   ),
                 ],
               ),
+              
             ],
           ),
         ),
