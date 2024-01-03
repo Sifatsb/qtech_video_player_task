@@ -34,6 +34,20 @@ class AppTextStyle {
 
   );
 
+  static const textStyle12Weight400Size12 = TextStyle(
+    color: Color(0xFF718096),
+    fontSize: 12,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w400,
+  );
+
+  static const textStyleWeight400Size8 = TextStyle(
+    color: Color(0xFF718096),
+    fontSize: 8,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w400,
+  );
+
 
 
 

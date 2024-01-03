@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qtech_video_player_task/app/data/constants/app_text_style.dart';
+import 'package:qtech_video_player_task/app/utilities/extensions/widget.extensions.dart';
 
 class CustomCard extends StatelessWidget {
   final String thumbnail;
@@ -57,7 +58,7 @@ class CustomCard extends StatelessWidget {
               ),
 
               /// Channel Name & Title
-              const SizedBox(height: 12.0),
+              10.verticalSpacing,
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
@@ -66,7 +67,7 @@ class CustomCard extends StatelessWidget {
                       radius: 16,
                       backgroundImage: NetworkImage(channelImage),
                     ),
-                    const SizedBox(width: 8.0),
+                    8.horizontalSpacing,
                     Expanded(
                       child: Text(
                         title,
@@ -94,9 +95,7 @@ class CustomCard extends StatelessWidget {
                           '$views views   .',
                           style: AppTextStyle.textStyle13Grey,
                         ),
-                        const SizedBox(
-                          width: 20,
-                        ),
+                        20.horizontalSpacing,
                         Text(
                           date,
                           style: AppTextStyle.textStyle13Grey,

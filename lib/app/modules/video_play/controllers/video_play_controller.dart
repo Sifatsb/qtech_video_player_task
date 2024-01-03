@@ -1,9 +1,12 @@
 import 'package:chewie/chewie.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:qtech_video_player_task/domain/core/model/trending_video_response_model.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPlayController extends GetxController {
+  TextEditingController commentController = TextEditingController();
+
   TrendingVideosData? video;
 
   VideoPlayerController? videoPlayerController;
@@ -11,12 +14,11 @@ class VideoPlayController extends GetxController {
 
   @override
   void onInit() async {
-
     video = Get.arguments['video'];
 
-
     chewieController = ChewieController(
-      videoPlayerController: VideoPlayerController.networkUrl(Uri.parse(video?.manifest ?? '')),
+      videoPlayerController:
+          VideoPlayerController.networkUrl(Uri.parse(video?.manifest ?? '')),
       aspectRatio: 3 / 2,
       autoPlay: true,
       looping: false,
@@ -31,5 +33,4 @@ class VideoPlayController extends GetxController {
     chewieController.dispose();
     super.dispose();
   }
-
 }
