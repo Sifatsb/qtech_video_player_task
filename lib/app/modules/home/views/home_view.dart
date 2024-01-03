@@ -25,31 +25,38 @@ class HomeView extends GetView<HomeController> {
             ? const Center(child: CircularProgressIndicator())
             : ListView.builder(
                 shrinkWrap: true,
+                controller: controller.scrollController,
                 physics: const BouncingScrollPhysics(),
-                itemCount: controller.videosList.length,
+                itemCount: controller.videosList.length+1,
                 itemBuilder: (context, index) {
-                  final video = controller.videosList[index];
-                  DateTime originalDate =
-                      DateTime.parse(video.dateAndTime ?? '');
-                  String formattedDate =
-                      DateFormat('MMM d, yyyy').format(originalDate);
-                  return CustomCard(
+
+                  return index < controller.videosList.length ? CustomCard(
                     onTap: () => Get.toNamed(
                       Routes.VIDEO_PLAY,
                       arguments: {
-                        'video': video,
+                        'video': controller.videosList[index],
                       },
                     ),
-                    thumbnail: video.thumbnail ?? '',
-                    title: video.title ?? '',
-                    views: video.viewers ?? '0',
-                    date: formattedDate,
-                    duration: video.duration ?? '0',
-                    channelImage: video.channelImage ?? '',
-                  );
+                    thumbnail: controller.videosList[index].thumbnail ?? '',
+                    title: controller.videosList[index].title ?? '',
+                    views: controller.videosList[index].viewers ?? '0',
+                    date: controller.videosList[index].dateAndTime ?? '',
+                    duration: controller.videosList[index].duration ?? '0',
+                    channelImage: controller.videosList[index].channelImage ?? '',
+                  ) : buildLoadingIndicator();
                 },
               ),
       ),
     );
   }
+}
+
+
+Widget buildLoadingIndicator() {
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Center(
+      child: Obx(() => Get.find<HomeController>().isMoreLoader.value ? const CircularProgressIndicator() : SizedBox()),
+    ),
+  );
 }

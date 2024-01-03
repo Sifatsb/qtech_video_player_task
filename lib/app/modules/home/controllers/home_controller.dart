@@ -8,7 +8,10 @@ import 'package:qtech_video_player_task/domain/core/model/trending_video_respons
 class HomeController extends GetxController {
   RxList<TrendingVideosData> videosList = <TrendingVideosData>[].obs;
 
+  final ScrollController scrollController = ScrollController();
   RxBool isLoading = false.obs;
+  RxBool isMoreLoader = false.obs;
+  int? nextPage = 1;
 
   Future<TrendingVideoResponseModel> getTrendingVideos(
       {required int page}) async {
@@ -21,6 +24,7 @@ class HomeController extends GetxController {
 
       TrendingVideoResponseModel responseModel =
           TrendingVideoResponseModel.fromJson(response);
+      nextPage = responseModel.links?.next ?? 1;
 
       if (responseModel.results!.isNotEmpty) {
         for (var element in responseModel.results!) {
@@ -39,9 +43,58 @@ class HomeController extends GetxController {
     return TrendingVideoResponseModel();
   }
 
+  void _scrollListener() {
+    if (scrollController.position.pixels ==
+        scrollController.position.maxScrollExtent) {
+      _loadMoreData();
+    }
+  }
+
+  Future<void> _loadMoreData() async {
+    if (!isMoreLoader.value) {
+      isMoreLoader.value = true;
+
+      if (nextPage != null) {
+        try {
+          isMoreLoader.value = true;
+
+          final response = await ApiBaseClient().getData(
+            url: ApiUrls.getTrendingVideos(page: nextPage!),
+          );
+
+          TrendingVideoResponseModel responseModel =
+              TrendingVideoResponseModel.fromJson(response);
+          nextPage = responseModel.links?.next;
+
+          if (responseModel.results!.isNotEmpty) {
+            for (var element in responseModel.results!) {
+              videosList.add(element);
+            }
+          }
+        } catch (e, t) {
+          isMoreLoader.value = false;
+          showBasicFailedSnackBar(message: 'Something went wrong');
+          debugPrint('$e');
+          debugPrint('$t');
+        } finally {
+          isMoreLoader.value = false;
+        }
+      } else {
+        isMoreLoader.value = false;
+      }
+    }
+  }
+
   @override
   void onInit() {
-    getTrendingVideos(page: 1);
+    getTrendingVideos(page: nextPage!);
+    scrollController.addListener(_scrollListener);
     super.onInit();
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
   }
 }

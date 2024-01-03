@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:qtech_video_player_task/app/data/constants/app_text_style.dart';
 import 'package:qtech_video_player_task/app/utilities/extensions/widget.extensions.dart';
 
@@ -97,7 +98,7 @@ class CustomCard extends StatelessWidget {
                         ),
                         20.horizontalSpacing,
                         Text(
-                          date,
+                          DateFormat('MMM d, yyyy').format(DateTime.tryParse(date) ?? DateTime.now()),
                           style: AppTextStyle.textStyle13Grey,
                         ),
                       ],
@@ -105,7 +106,6 @@ class CustomCard extends StatelessWidget {
                   ),
                 ],
               ),
-              
             ],
           ),
         ),
