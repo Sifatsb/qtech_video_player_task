@@ -1,16 +1,30 @@
 # qtech_video_player_task
 
-A new Flutter project.
 
-## Getting Started
+## Features
+- Video List.
+- Video Player.
+- State Management: Getx.
+- Clean Code.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Add the necessary dependencies to your pubspec.yaml file:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Third-Party Services
+- Chewie Player:
+  The chewie package is used for the video play.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+-Add the following dependency to your pubspec.yaml:
+
+## Screenshots
+<br>
+
+## Android
+<br>
+<img src="./screenshots/1.png" width="200" height="400" />
+<br>
+<img src="./screenshots/2.png" width="200" height="400" />
+<br>
+<br>
+
+
