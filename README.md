@@ -21,9 +21,9 @@
 
 ## Android
 <br>
-<img src="./screenshots/1.png" width="200" height="400" />
-<br>
 <img src="./screenshots/2.png" width="200" height="400" />
+<br>
+<img src="./screenshots/1.png" width="200" height="400" />
 <br>
 <br>
 
